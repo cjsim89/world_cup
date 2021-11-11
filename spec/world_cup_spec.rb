@@ -2,7 +2,7 @@ require '../lib/player'
 require '../lib/team'
 require '../lib/world_cup'
 
-RSpec.describe Team do
+RSpec.describe WorldCup do
   before :each do
     @france = Team.new("France")
     @mbappe = Player.new({name: "Kylian Mbappe", position: "forward"})
@@ -37,10 +37,16 @@ RSpec.describe Team do
     expect(@world_cup.active_players_by_position("midfielder").length).to eq(1)
 
   end
-  # it 'has only one team' do
-  #   @croatia.set_eliminated(true)
-  #   expect(@world_cup.teams.length).to eq(1)
-  # end
+
+  it "has 1 forward from function" do
+    all_players = @world_cup.all_players_by_position
+    expect(all_players["forward"].length).to eq(1)
+  end
+
+  it "has 2 midfielders from function" do
+    all_players = @world_cup.all_players_by_position
+    expect(all_players["midfielder"].length).to eq(2)
+  end
 
 
 end

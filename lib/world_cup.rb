@@ -20,4 +20,23 @@ class WorldCup
     end
     player_list
   end
+
+  def all_players_by_position
+    all_players = {"forward" => [], "midfielder" => [], "defender" => []}
+    @teams.each do |team|
+      team.players.each do |player|
+        if (player.position == "forward")
+          all_players["forward"].push(player)
+        end
+        if player.position == "midfielder"
+          all_players["midfielder"].push(player)
+        end
+        if player.position == "defender"
+          all_players["defender"].push(player)
+        end
+      end
+    end
+    all_players
+  end
+
 end
